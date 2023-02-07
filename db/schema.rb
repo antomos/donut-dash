@@ -47,8 +47,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_183733) do
     t.string "description"
     t.float "price"
     t.boolean "available"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_donuts_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -95,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_183733) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "donuts", "users"
   add_foreign_key "orders", "donuts"
   add_foreign_key "orders", "users"
 end
