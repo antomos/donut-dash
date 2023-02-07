@@ -8,6 +8,8 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 gem "cloudinary"
 
+gem "faker"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
