@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_183733) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_192232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_183733) do
     t.bigint "donut_id", null: false
     t.bigint "user_id", null: false
     t.integer "quantity"
-    t.integer "total_cost"
+    t.float "total_cost"
     t.string "status"
     t.boolean "complete"
     t.date "requested_date"
