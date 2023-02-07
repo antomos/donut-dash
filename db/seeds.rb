@@ -10,9 +10,9 @@ require "faker"
 
 20.times do
   donut = Donut.new
-donut.name = Faker::Artist.name
-donut.description = Faker::Coffee.notes
-donut.price= Faker::Number.decimal(l_digits: 1)
-donut.available= true
-donut.save!
+  donut.name = Faker::Artist.name
+  donut.description = Faker::Coffee.notes
+  donut.price = Faker::Number.decimal(l_digits: 1)
+  donut.available = true
+  donut.save!
 end
