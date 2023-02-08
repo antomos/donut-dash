@@ -1,19 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_donut # , only: [:new, :create]
-
-  def index
-    @reviews = @donut.reviews
-  end
-
-  def show
-    @review = @donut.reviews.find(params[:id])
-  end
-
-  def new
-    @review = @donut.reviews.new
-  end
-
   def create
+    @donut = Donut.find(params[:donut_id])
     @review = @donut.reviews.new(review_params)
     if @review.save
       redirect_to @donut, notice: 'Review was successfully created.'
@@ -23,10 +10,6 @@ class ReviewsController < ApplicationController
   end
 
   private
-
-  def set_donut
-    @donut = Donut.find(params[:donut_id])
-  end
 
   def review_params
     params.require(:review).permit(:rating, :comment)
