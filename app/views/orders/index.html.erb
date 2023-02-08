@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Find your orders here:</h1>
+
+  <% @orders.each do |order| %>
+    <p>
+      <%= order.id %>
+      <%= order.name %>
+      <%= order.address %>
+      <%= order.email %>
+      <%= order.total_cost %>
+    </p>
+  <% end %>
+</div>
