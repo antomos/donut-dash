@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
   resources :orders, only: [:index, :show]
+  get :account, to: "pages#account"
 end
