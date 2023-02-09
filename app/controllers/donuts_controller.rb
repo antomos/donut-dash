@@ -5,7 +5,6 @@ class DonutsController < ApplicationController
 
   def show
     @donut = Donut.find(params[:id])
-    @user = @donut.user
   end
 
   def create
