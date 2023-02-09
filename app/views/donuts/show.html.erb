@@ -8,6 +8,10 @@
           <h5 class="card-title"><strong><%= @donut.name%></strong></h5>
         </div>
         <div class="card-body">
+          <h5 class="card-title"><strong>Sold by: </strong></h5>
+          <p class="card-text"><%= @user.username%></p>
+        </div>
+        <div class="card-body">
           <h5 class="card-title"><strong>Description: </strong></h5>
           <p class="card-text"><%= @donut.description%></p>
         </div>
@@ -21,14 +25,30 @@
         </div>
       </div>
       <div class="card" style="width: 18rem;">
-        <div>
+        <h3><strong>Reviews</strong></h3>
           <% @donut.reviews.each do |review| %>
-            <%= review.rating %>
-            <%= review.comment %>
+                <div class="card" >
+                  <div class="card-body">
+                    <h5 class="card-title"><strong>Review </strong></h5>
+                    <p class="card-text"><%= review.comment %></p>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><strong>Rating: </strong></h5>
+                    <p class="card-text"><small>
+                        <% count = 0 %>
+                        <% 5.times do %>
+                          <% if review.rating > count %>
+                            <i class="fa-solid fa-star"></i>
+                          <% else %>
+                            <i class="fa-regular fa-star"></i>
+                          <% end %>
+                          <% count += 1 %>
+                        <% end %>
+                      </small> </p>
+                  </div>
+                </div>
           <% end %>
-        </div>
       </div>
-
   </div>
   <button type="button" class="btn btn-light"><%= link_to "Back to Donuts", donuts_path %></button>
 </div>
