@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>Order #<%= @order.id %></h1>
+      <h3> Donut worry!!! Your order is on its way </h3>
+      <p>Order status: <%= @order.status %></p>
+      <p>Order total: <%= @order.total %></p>
+      <p>Order date: <%= @order.created_at %></p>
+      <p>Order items:</p>
+      <ul>
+        <% @order.order_items.each do |order_item| %>
+          <li>
+            <%= order_item.product.name %>
+            <%= order_item.quantity %>
+            <%= order_item.product.price %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
