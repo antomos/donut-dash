@@ -25,20 +25,23 @@ FILLING = [ "Chocolate", "Glazed", "Sugar", "Cinnamon", "Maple", "Blueberry", "S
   user.available = [true, false].sample
   user.save!
   puts "User #{user.id} created"
-  3.times do
-    donut = Donut.new
-    donut.name = Faker::Coffee.blend_name
-    donut.description = FILLING.sample
-    donut.price = Faker::Number.decimal(l_digits: 1)
-    donut.photo.attach(io: URI.open("https://source.unsplash.com/1600x900/?donut"), filename: "donut.jpg", content_type: "image/jpg")
-    donut.available = [true, false].sample
-    donut.user = user
-    donut.save!
+  if user.baker
     3.times do
-      review= Review.create!(comment:Faker::Movie.quote, rating:rand(6) ,donut:donut)
-      puts "Review #{review.id} created for donut #{donut.id}"
+      donut = Donut.new
+      donut.name = Faker::Coffee.blend_name
+      donut.description = FILLING.sample
+      donut.price = Faker::Number.decimal(l_digits: 1)
+      donut.photo.attach(io: URI.open("https://source.unsplash.com/1600x900/?donut"), filename: "donut.jpg", content_type: "image/jpg")
+      donut.available = [true, false].sample
+      donut.user = user
+      donut.save!
+      3.times do
+        review= Review.create!(comment:Faker::Movie.quote, rating:rand(6) ,donut:donut)
+        puts "Review #{review.id} created for donut #{donut.id}"
+      end
+      puts "Donut #{donut.id} created"
     end
-    puts "Donut #{donut.id} created"
   end
 end
+
 puts "seed finished"
