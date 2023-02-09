@@ -5,7 +5,7 @@ class CreateDonuts < ActiveRecord::Migration[7.0]
       t.string :description
       t.float :price
       t.boolean :available
-      # t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
