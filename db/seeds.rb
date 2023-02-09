@@ -35,7 +35,7 @@ FILLING = [ "Chocolate", "Glazed", "Sugar", "Cinnamon", "Maple", "Blueberry", "S
     donut.user = user
     donut.save!
     3.times do
-      review= Review.create!(comment:Faker::Movie.quote, rating:rand(6) ,donut:donut)
+      review = Review.create!(comment: Faker::Movie.quote, rating: rand(6), donut: donut)
       puts "Review #{review.id} created for donut #{donut.id}"
     end
     puts "Donut #{donut.id} created"
