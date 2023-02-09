@@ -21,3 +21,10 @@
   </div>
   <button type="button" class="btn btn-light"><%= link_to "Back to Donuts", donuts_path %></button>
 </div>
+
+<div>
+  <% @donut.review.all.each do |review| %>
+    <%= review.rating %>
+    <%= review.comment %>
+  <% end %>
+</div>
