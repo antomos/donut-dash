@@ -21,7 +21,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><strong>Rating : </strong></h5>
-          <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating%></i></p>
+          <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating>0 ? @donut.rating : "N/A" %></i></p>
         </div>
         <div class="card-body">
           <button type="button" class="btn btn-success"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>

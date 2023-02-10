@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_213820) do
     t.string "name"
     t.string "description"
     t.float "price"
-    t.float "rating"
+    t.float "rating", default: 0.0
     t.boolean "available"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

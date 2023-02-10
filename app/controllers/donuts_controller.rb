@@ -13,17 +13,19 @@ class DonutsController < ApplicationController
   end
 
   def create
+
     @donut = Donut.new(donut_params)
-    if @donut.save
-      #redirect_to donut_path(@donut)
+    @donut.user_id = 1
+    if @donut.save!
+      redirect_to donut_path(@donut)
     else
-      render user_path(@donut.user), status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
     def donut_params
-      params.require(:donut).permit(:name, :photo, :description, :price, :available)
+      params.require(:donut).permit(:name, :photo, :description, :price )
     end
 end
