@@ -8,6 +8,10 @@ class DonutsController < ApplicationController
     @user = @donut.user
   end
 
+  def new
+    @donut = Donut.new
+  end
+
   def create
     @donut = Donut.new(donut_params)
     if @donut.save
