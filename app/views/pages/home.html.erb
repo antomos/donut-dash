@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 id="home-page-title">We are home to the most delicious donuts you've every tasted</h1>
+<div id="home-page-container" class="container">
+  <div class="row">
+    <div class="col-6">
+      <img class="img-fluid" src="https://pyxis.nymag.com/v1/imgs/a22/179/b205a78510315d932427143ad6b6fb5694-03-homer-simpson-doughnuts.2x.rhorizontal.w700.jpg" alt="Homer eating donut">
+      <p>Check out our top rated donuts:</p>
+    </div>
+    <div class="col-6">
+      <p>
+        <%  @top_donuts.each do |donut| %>
+          <div class="card" style="width: 18rem;">
+            <div class="card-img-top">
+              <%= link_to donut_path(donut) do %>
+                <%= cl_image_tag(donut.photo.key, width: 200, height: 300, crop: :fit , alt: donut.name ) %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= donut.name%></strong> </h5>
+            </div>
+            <div>
+              <p class="card-text"> <i class="fa-solid fa-star"><%= donut.rating>0 ? donut.rating : "N/A" %></i></p>
+            </div>
+            <div>
+              <p class="card-text">£ <%= donut.price%></p>
+            </div>
+            <div>
+              <p class="card-text"><%= donut.available? ? "Available" : "Not available" %></p>
+            </div>
+          </div>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
