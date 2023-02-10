@@ -10,7 +10,13 @@
           <% end %>
           </div>
             <div class="card-body">
-              <h5 class="card-title"><strong><%= donut.name%></strong> - <i class="fa-solid fa-star"></i></h5>
+              <h5 class="card-title"><strong><%= donut.name%></strong> </h5>
+            </div>
+            <div>
+              <p class="card-text"> <i class="fa-solid fa-star"><%= donut.rating>0 ? donut.rating : "N/A" %></i></p>
+            </div>
+            <div>
+              <p class="card-text">£ <%= donut.price%></p>
             </div>
             <div>
               <p class="card-text"><%= donut.available? ? "Available" : "Not available" %></p>

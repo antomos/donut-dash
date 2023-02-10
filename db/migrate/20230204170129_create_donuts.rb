@@ -4,6 +4,7 @@ class CreateDonuts < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :description
       t.float :price
+      t.float :rating, default: 0
       t.boolean :available
       t.references :user, null: false, foreign_key: true
 
