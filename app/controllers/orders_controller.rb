@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.donut = @donut
     if @order.quantity
-      @order.total_cost = @order.quantity * @donut.price
+      @order.total_cost = (@order.quantity * @donut.price).round(2)
     end
     @order.status = "pending" # add to model as deafault with migration
     if @order.save
