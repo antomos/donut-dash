@@ -1,12 +1,10 @@
 <div class="container">
   <div class="row row-cols-2">
       <div class="card" style="width: 18rem;">
-        <div class="card-img-top">
-          <%= cl_image_tag(@donut.photo.key, width: 200, height: 300, crop: :fit , alt: @donut.name ) %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><strong><%= @donut.name%></strong></h5>
-        </div>
+        <div class="card-header">
+            <h5><strong><%= @donut.name%></strong></h5>
+          </div>
+        <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fill , alt: @donut.name, class:"card-img-top rounded mx-auto d-block img-thumbnail" ) %>
         <div class="card-body">
           <h5 class="card-title"><strong>Sold by: </strong></h5>
           <p class="card-text"><%= @user.username%></p>
@@ -24,7 +22,7 @@
           <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating>0 ? @donut.rating : "N/A" %></i></p>
         </div>
         <div class="card-body">
-          <button type="button" class="btn btn-success"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>
+          <button type="button" class="btn btn-outline-success btn-lg"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>
         </div>
       </div>
       <div class="card" style="width: 18rem;">
@@ -54,6 +52,6 @@
       </div>
   </div>
 
-  <button type="button" class="btn btn-info"><%= link_to "Back to Donuts", donuts_path %></button>
+  <button type="button" class="btn btn-outline-warning btn-lg"><%= link_to "Back to Donuts", donuts_path %></button>
 
 </div>

@@ -12,7 +12,7 @@ User.destroy_all
 Review.destroy_all
 puts "starting seed"
 FILLING = [ "Chocolate", "Glazed", "Sugar", "Cinnamon", "Maple", "Blueberry", "Strawberry", "Lemon", "Vanilla", "Chocolate", "Pumpkin", "Caramel", "Raspberry", "Peanut Butter", "Coconut", "Banana", "Apple", "Orange", "Lime", "Lemon", "Mango", "Pineapple", "Peach", "Pear", "Raspberry", "Strawberry", "Blueberry", "Blackberry", "Cranberry", "Cherry", "Apricot", "Pomegranate", "Pumpkin", "Cinnamon", "Maple", "Honey", "Vanilla", "Chocolate", "Caramel", "Peanut Butter", "Coconut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadamia", "Pistachio", "Peanut", "Almond", "Walnut", "Hazelnut", "Pecan", "Cashew", "Macadam"]
-5.times do
+10.times do
   user = User.new
   user.email = Faker::Internet.email
   user.username = Faker::Internet.username
@@ -25,22 +25,24 @@ FILLING = [ "Chocolate", "Glazed", "Sugar", "Cinnamon", "Maple", "Blueberry", "S
   user.available = [true, false].sample
   user.save!
   puts "User #{user.id} created"
-  3.times do
-    donut = Donut.new
-    donut.name = Faker::Coffee.blend_name
-    donut.description = FILLING.sample
-    donut.price = Faker::Number.decimal(l_digits: 1)
-    donut.photo.attach(io: URI.open("https://source.unsplash.com/1600x900/?donut"), filename: "donut.jpg", content_type: "image/jpg")
-    donut.available = [true, false].sample
-    donut.user = user
-    donut.save!
-    3.times do
-      review= Review.create!(comment:Faker::Movie.quote, rating:rand(1..5) ,donut:donut)
-      puts "Review #{review.id} created for donut #{donut.id}"
-      donut.rating = Review.where(donut: donut).average(:rating).round(2)
-      donut.save!
-    end
-    puts "Donut #{donut.id} created"
+  if user.baker == true
+      3.times do
+        donut = Donut.new
+        donut.name = Faker::Coffee.blend_name
+        donut.description = FILLING.sample
+        donut.price = Faker::Number.decimal(l_digits: 1)
+        donut.photo.attach(io: URI.open("https://source.unsplash.com/1600x900/?donut"), filename: "donut.jpg", content_type: "image/jpg")
+        donut.available = [true, false].sample
+        donut.user = user
+        donut.save!
+        3.times do
+          review= Review.create!(comment:Faker::Movie.quote, rating:rand(1..5) ,donut:donut)
+          puts "Review #{review.id} created for donut #{donut.id}"
+          donut.rating = Review.where(donut: donut).average(:rating).round(2)
+          donut.save!
+        end
+        puts "Donut #{donut.id} created"
+      end
   end
 end
 puts "seed finished"
