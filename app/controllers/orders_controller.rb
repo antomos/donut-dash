@@ -1,24 +1,28 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
-  def index
-    @orders = Order.all
-  end
+  before_action :set_donut, only: [:new, :create]
 
   def show
-    @donut = @order.donut
+    @donut = Donut.find(@order.donut_id)
   end
 
   def new
     @order = Order.new
+    # @donut = Donut.new
+    @order.user_id = current_user.id
+    # @order.donut_id = donut.id
   end
 
   def create
     @order = Order.new(order_params)
-    @order.user = current_user
+    @order.user_id = current_user.id
+    @order.donut = @donut
+    @order.total_cost = @order.quantity * @donut.price
+    @order.status = "pending" # add to model as deafault with migration
     if @order.save
       redirect_to order_path(@order)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +32,11 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def set_donut
+    @donut = Donut.find(params[:donut_id])
+  end
+
   def order_params
-    params.require(:order).permit(:donut_id)
+    params.require(:order).permit(:quantity, :requested_date, :requested_time)
   end
 end
