@@ -1,11 +1,23 @@
 <div class='container'>
-  <h1>Account</h1>
-  <p><%= current_user.email %></p>
-  <p><%= current_user.first_name %></p>
-  <p><%= link_to "Edit Account", edit_user_registration_path %></p>
-  <% current_user.orders.each do |order| %>
-    <p><%= order.id %></p>
-  <% end %>
+  <h3>Hi <%= current_user.first_name %>!</h3>
+  <h4>Active orders:</h4>
+    <% current_user.orders.each do |order| %>
+      <div class='card active-order-card d-flex flex-row justify-content-between'>
+        <div>
+          <p><%= order.donut.name %> x <%= order.quantity %></p>
+          <% total = order.total_cost.round(2).to_s.split(".") %>
+          <% if total[1].length == 1 %>
+            <% total[1] = total[1] + "0" %>
+          <%end%>
+          <% total = total.join(".") %>
+          <p>Total: £<%= total %></p>
+          <p>Order date: <%= order.created_at %></p>
+        </div>
+        <div>
+            <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+        </div>
+      </div>
+    <% end %>
   <h1>------------</h1>
   <% current_user.donuts.each do |donut| %>
     <% donut.orders.each do |order| %>
