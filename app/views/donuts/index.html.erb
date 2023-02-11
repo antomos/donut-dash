@@ -1,28 +1,22 @@
 <div class="container">
-  <div class="container">
-    <div class="row row-cols-2">
-      <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
-        <%  @donuts.each do |donut| %>
-          <div class="card" style="width: 18rem;">
-          <div class="card-img-top">
+  <div class="row row-cols-4 gx-5 gy-2">
+    <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
+      <%  @donuts.each do |donut| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h5><strong><%= donut.name%></strong></h5>
+          </div>
           <%= link_to donut_path(donut) do %>
-            <%= cl_image_tag(donut.photo.key, width: 200, height: 300, crop: :fit , alt: donut.name ) %>
+            <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
           <% end %>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> <i class="fa-solid fa-star"> <%= donut.rating>0 ? donut.rating : "N/A" %></i></li>
+              <li class="list-group-item">£ <%= donut.price%></li>
+              <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+            </ul>
           </div>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= donut.name%></strong> </h5>
-            </div>
-            <div>
-              <p class="card-text"> <i class="fa-solid fa-star"><%= donut.rating>0 ? donut.rating : "N/A" %></i></p>
-            </div>
-            <div>
-              <p class="card-text">£ <%= donut.price%></p>
-            </div>
-            <div>
-              <p class="card-text"><%= donut.available? ? "Available" : "Not available" %></p>
-            </div>
-          </div>
-        <% end %>
-    </div>
+        </div>
+      <% end %>
   </div>
 </div>
