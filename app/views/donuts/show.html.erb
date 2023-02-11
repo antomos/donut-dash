@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row row-cols-2 m-5 mx-auto">
       <div class="card big-white-container ml-5" style="width: 18rem;">
-        <div class="card-header">
+        <div class="card-body">
             <h5><strong><%= @donut.name%></strong></h5>
           </div>
         <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fill , alt: @donut.name, class:"card-img-top rounded mx-auto d-block img-thumbnail" ) %>
@@ -21,9 +21,7 @@
           <h5 class="card-title"><strong>Rating : </strong></h5>
           <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating>0 ? @donut.rating : "N/A" %></i></p>
         </div>
-        <div class="card-body">
-          <button type="button" class="btn btn-outline-success btn-lg"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>
-        </div>
+
       </div>
       <div class="card big-white-container mr-5" style="width: 18rem;">
         <h3><strong>Reviews</strong></h3>
@@ -50,19 +48,12 @@
                 </div>
           <% end %>
       </div>
-      <div class="container py-5">
-        <div class="row">
-          <div class="col-12 col-md-6 offset-lg-3">
-            <div class="bg-white rounded p-3 shadow">
-              <h3>Add a donut to your order</h3>
-              <%= render"orders/form",donut:@donut,order:Order.new %>
-
-            </div>
-          </div>
-        </div>
+      <div class="card big-white-container p-3 shadow">
+        <h3>Add a donut to your order</h3>
+        <%= render"orders/form",donut:@donut,order:Order.new %>
       </div>
   </div>
 
-  <button type="button" class="btn btn-outline-warning btn-lg"><%= link_to "Back to Donuts", donuts_path %></button>
+  <button type="button" class="btn btn-warning"><%= link_to "Back to Donuts", donuts_path, style: "text-decoration:none; color:white;" %></button>
 
 </div>
