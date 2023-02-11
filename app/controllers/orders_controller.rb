@@ -2,12 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
   before_action :set_donut, only: [:new, :create]
 
-  def index
-    orders = Order.all
-  end
-
-  def show
-
+  def show;
+    @donut = Donut.find(@order.donut_id)
   end
 
   def new
@@ -20,6 +16,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    @order.total_cost = @order.quantity * @donut.price
+    @order.status = "pending" # add to model as deafault with migration
     if @order.save
       redirect_to order_path(@order)
     else
