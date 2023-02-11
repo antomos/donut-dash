@@ -1,8 +1,8 @@
-<%= simple_form_for [donut, order] do |f| %>
-          <%# <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
+<%= simple_form_for [donut, order], data: { controller: 'flatpickr' } do |f| %>
+  <%# <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
 
-          <%= f.input :quantity, collection: 1..24 %>
-          <%= f.input :requested_date %>
-          <%= f.input :requested_time %>
-          <%= f.submit class: "btn btn-success" %>
-        <% end %>
+  <%= f.input :quantity, collection: 1..24 %>
+  <%= f.input :requested_date, as: :string, input_html: { data: { flatpickr_target: "requestedDate" } } %>
+  <%= f.input :requested_time %>
+  <%= f.submit class: "btn btn-light" %>
+<% end %>
