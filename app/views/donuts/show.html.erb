@@ -50,6 +50,17 @@
                 </div>
           <% end %>
       </div>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-12 col-md-6 offset-lg-3">
+            <div class="bg-white rounded p-3 shadow">
+              <h3>Add a donut to your order</h3>
+              <%= render"orders/form",donut:@donut,order:Order.new %>
+
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 
   <button type="button" class="btn btn-outline-warning btn-lg"><%= link_to "Back to Donuts", donuts_path %></button>
