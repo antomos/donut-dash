@@ -6,7 +6,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Add a donut to your order</h3>
         <%= simple_form_for [@donut, @order] do |f| %>
-          <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
+          <%# <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
+          <%= @donut.name %>
           <%= f.input :quantity, collection: 0..24 %>
           <%= f.input :requested_date %>
           <%= f.input :requested_time %>

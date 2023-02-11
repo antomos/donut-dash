@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    @order.donut = @donut
     @order.total_cost = @order.quantity * @donut.price
     @order.status = "pending" # add to model as deafault with migration
     if @order.save
@@ -36,6 +37,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :requested_date, :requested_time, :donut_id)
+    params.require(:order).permit(:quantity, :requested_date, :requested_time)
   end
 end
