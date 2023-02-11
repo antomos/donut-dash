@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row row-cols-2">
-      <div class="card" style="width: 18rem;">
+  <div class="row row-cols-2 m-5 mx-auto">
+      <div class="card big-white-container ml-5" style="width: 18rem;">
         <div class="card-header">
             <h5><strong><%= @donut.name%></strong></h5>
           </div>
@@ -25,7 +25,7 @@
           <button type="button" class="btn btn-outline-success btn-lg"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card big-white-container mr-5" style="width: 18rem;">
         <h3><strong>Reviews</strong></h3>
           <% @donut.reviews.each do |review| %>
                 <div class="card" >
