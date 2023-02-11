@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
   before_action :set_donut, only: [:new, :create]
 
-  def show;
+  def show
     @donut = Donut.find(@order.donut_id)
   end
 
