@@ -8,18 +8,25 @@ class DonutsController < ApplicationController
     @user = @donut.user
   end
 
+  def new
+    @donut = Donut.new
+  end
+
   def create
+
     @donut = Donut.new(donut_params)
+    @donut.user_id = current_user.id
     if @donut.save
-      #redirect_to donut_path(@donut)
+      redirect_to donut_path(@donut)
     else
-      render user_path(@donut.user), status: :unprocessable_entity
+
+      redirect_to new_donut_path, status: :unprocessable_entity
     end
   end
 
   private
 
     def donut_params
-      params.require(:donut).permit(:name, :photo, :description, :price, :available)
+      params.require(:donut).permit(:name, :photo, :description, :price )
     end
 end
