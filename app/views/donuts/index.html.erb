@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="row row-cols-4 gx-5 gy-2">
     <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
       <%  @donuts.each do |donut| %>
@@ -18,5 +19,6 @@
           </div>
         </div>
       <% end %>
+
   </div>
 </div>
