@@ -20,13 +20,13 @@ class DonutsController < ApplicationController
       redirect_to donut_path(@donut)
     else
 
-      redirect_to new_donut_path, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
     def donut_params
-      params.require(:donut).permit(:name, :photo, :description, :price )
+      params.require(:donut).permit(:name, :photo, :description, :price, :available)
     end
 end

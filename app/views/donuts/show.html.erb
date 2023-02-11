@@ -21,9 +21,7 @@
           <h5 class="card-title"><strong>Rating : </strong></h5>
           <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating>0 ? @donut.rating : "N/A" %></i></p>
         </div>
-        <div class="card-body">
-          <button type="button" class="btn btn-outline-success btn-lg"><%= link_to "Order Donut", new_donut_order_path(@donut) %></button>
-        </div>
+
       </div>
       <div class="card big-white-container mr-5" style="width: 18rem;">
         <h3><strong>Reviews</strong></h3>

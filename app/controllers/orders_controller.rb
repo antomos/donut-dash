@@ -17,7 +17,9 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.donut = @donut
-    @order.total_cost = @order.quantity * @donut.price
+    if @order.quantity
+      @order.total_cost = @order.quantity * @donut.price
+    end
     @order.status = "pending" # add to model as deafault with migration
     if @order.save
       redirect_to order_path(@order)
