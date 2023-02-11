@@ -1,7 +1,7 @@
 <%= simple_form_for [donut, order] do |f| %>
           <%# <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
 
-          <%= f.input :quantity, collection: 0..24 %>
+          <%= f.input :quantity, collection: 1..24 %>
           <%= f.input :requested_date %>
           <%= f.input :requested_time %>
           <%= f.submit class: "btn btn-light" %>
