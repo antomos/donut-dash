@@ -38,7 +38,7 @@ FILLING = [ "Chocolate", "Glazed", "Sugar", "Cinnamon", "Maple", "Blueberry", "S
         3.times do
           review= Review.create!(comment:Faker::Movie.quote, rating:rand(1..5) ,donut:donut)
           puts "Review #{review.id} created for donut #{donut.id}"
-          donut.rating = Review.where(donut: donut).average(:rating).round(2)
+          donut.rating = Review.where(donut: donut).average(:rating).round(1)
           donut.save!
         end
         puts "Donut #{donut.id} created"
