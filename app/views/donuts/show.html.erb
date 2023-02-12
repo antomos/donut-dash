@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><strong>Rating : </strong></h5>
-          <p class="card-text"><i class="fa-solid fa-star"><%= @donut.rating>0 ? @donut.rating : "N/A" %></i></p>
+          <p class="card-text"><%= image_tag "donut-c.png", width: 20, height: 20 %> <%= @donut.rating>0 ? "#{@donut.rating} (#{@donut.number_ratings})" : "N/A" %></p>
         </div>
 
       </div>
@@ -37,9 +37,9 @@
                         <% count = 0 %>
                         <% 5.times do %>
                           <% if review.rating > count %>
-                            <i class="fa-solid fa-star"></i>
+                            <%= image_tag "donut-c.png", width: 20, height: 20 %>
                           <% else %>
-                            <i class="fa-regular fa-star"></i>
+                            <%= image_tag "donut-bw.png", width: 20, height: 20 %>
                           <% end %>
                           <% count += 1 %>
                         <% end %>
