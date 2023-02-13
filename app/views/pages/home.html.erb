@@ -18,7 +18,7 @@
               <h5 class="card-title"><strong><%= donut.name%></strong> </h5>
             </div>
             <div>
-              <p class="card-text"> <i class="fa-solid fa-star"><%= donut.rating>0 ? donut.rating : "N/A" %></i></p>
+              <p class="card-text"><%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></p>
             </div>
             <div>
               <p class="card-text">£ <%= donut.price%></p>
