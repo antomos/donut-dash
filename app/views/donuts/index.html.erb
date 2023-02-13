@@ -1,6 +1,5 @@
 <div class="container m-5 mx-auto">
-
-  <div class="row row-cols-4 gx-5 gy-2">
+  <div class="row row-cols-4 gx-5 gy-2 my-5">
     <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
       <%  @donuts.each do |donut| %>
         <div class="card big-white-container" style="width: 18rem;">
@@ -19,6 +18,5 @@
           </div>
         </div>
       <% end %>
-
   </div>
 </div>

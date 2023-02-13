@@ -1,4 +1,4 @@
-<h1 id="home-page-title">We are home to the most delicious donuts you've every tasted</h1>
+<h1 id="home-page-title">We are home to the most delicious donuts you've ever tasted</h1>
 <div class="container m-5 mx-auto big-white-container">
   <div class="row">
     <div class="col-6">
@@ -8,8 +8,8 @@
     <div class="col-6">
       <p>
         <%  @top_donuts.each do |donut| %>
-          <div class="card" style="width: 18rem;">
-            <div class="card-img-top">
+          <div class="card m-5" style="width: 18rem;">
+            <div class="card-img-top p-3">
               <%= link_to donut_path(donut) do %>
                 <%= cl_image_tag(donut.photo.key, width: 200, height: 300, crop: :fit , alt: donut.name ) %>
               <% end %>
