@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :show]
   get :account, to: "pages#account"
+  get :bakery, to: "pages#bakery"
 end
