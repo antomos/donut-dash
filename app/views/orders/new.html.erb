@@ -5,14 +5,7 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
         <h3>Add a donut to your order</h3>
-        <%= simple_form_for [@donut, @order] do |f| %>
-          <%# <%= f.association :donut, prompt: "Select a donut", input_html: {data: { controller: "tom-select"}} %>
-          <%= @donut.name %>
-          <%= f.input :quantity, collection: 0..24 %>
-          <%= f.input :requested_date %>
-          <%= f.input :requested_time %>
-          <%= f.submit class: "btn btn-light" %>
-        <% end %>
+        <%= render "form", donut: @donut, order: @order %>
       </div>
     </div>
   </div>

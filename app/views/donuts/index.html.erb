@@ -3,7 +3,7 @@
     <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
       <%  @donuts.each do |donut| %>
         <div class="card big-white-container" style="width: 18rem;">
-          <div class="card-header">
+          <div class="card-body">
             <h5><strong><%= donut.name%></strong></h5>
           </div>
           <%= link_to donut_path(donut) do %>
