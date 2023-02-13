@@ -5,4 +5,7 @@ class PagesController < ApplicationController
 
   def account
   end
+
+  def bakery
+  end
 end
