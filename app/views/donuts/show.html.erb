@@ -2,7 +2,7 @@
   <div class="row row-cols-2 m-5 mx-auto">
       <div class="card big-white-container ml-5" style="width: 18rem;">
         <div class="card-body">
-            <h5><strong><%= @donut.name%></strong></h5>
+            <h3><strong><%= @donut.name%></strong></h3>
           </div>
         <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fill , alt: @donut.name, class:"card-img-top rounded mx-auto d-block img-thumbnail" ) %>
         <div class="card-body">
@@ -24,28 +24,30 @@
 
       </div>
       <div class="card big-white-container mr-5" style="width: 18rem;">
-        <h3><strong>Reviews</strong></h3>
+        <h5><strong>Reviews</strong></h5>
           <% @donut.reviews.each do |review| %>
-                <div class="card" >
-                  <div class="card-body">
-                    <h5 class="card-title"><strong>Review </strong></h5>
-                    <p class="card-text"><%= review.comment %></p>
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title"><strong>Rating: </strong></h5>
-                    <p class="card-text"><small>
-                        <% count = 0 %>
-                        <% 5.times do %>
-                          <% if review.rating > count %>
-                            <%= image_tag "donut-c.png", width: 20, height: 20 %>
-                          <% else %>
-                            <%= image_tag "donut-bw.png", width: 20, height: 20 %>
-                          <% end %>
-                          <% count += 1 %>
-                        <% end %>
-                      </small> </p>
-                  </div>
-                </div>
+            <div class="card" >
+              <div class="card-body">
+                <p class="card-text">
+                  <% count = 0 %>
+                  <% 5.times do %>
+                    <% if review.rating > count %>
+                      <%= image_tag "donut-c.png", width: 20, height: 20 %>
+                    <% else %>
+                      <%= image_tag "donut-bw.png", width: 20, height: 20 %>
+                    <% end %>
+                    <% count += 1 %>
+                  <% end %>
+                  <%= review.donut.user.username %>
+                </p>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= review.comment %></p>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= review.donut.user.updated_at.strftime("%a, %d %b %Y") %></p>
+              </div>
+            </div>
           <% end %>
       </div>
       <div class="card big-white-container p-3 shadow">
