@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row row-cols-2 m-5 mx-auto">
-      <div class="card big-white-container ml-5" style="width: 18rem;">
+      <div class="card big-white-container m-1" style="width: 18rem;">
         <div class="card-body">
             <h5><strong><%= @donut.name%></strong></h5>
           </div>
@@ -23,7 +23,7 @@
         </div>
 
       </div>
-      <div class="card big-white-container mr-5" style="width: 18rem;">
+      <div class="card big-white-container m-3" style="width: 18rem;">
         <h3><strong>Reviews</strong></h3>
           <% @donut.reviews.each do |review| %>
                 <div class="card" >
@@ -54,6 +54,6 @@
       </div>
   </div>
 
-  <button type="button" class="btn btn-warning"><%= link_to "Back to Donuts", donuts_path, style: "text-decoration:none; color:white;" %></button>
+  <button type="button" class="btn btn-warning m-3"><%= link_to "Back to Donuts", donuts_path, style: "text-decoration:none; color:white;" %></button>
 
 </div>

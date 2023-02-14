@@ -1,8 +1,8 @@
-<div class="container m-5 mx-auto">
-  <div class="row row-cols-4 gx-5 gy-2 my-5">
-    <%= "Sorry! No donuts at the momenent!" if @donuts.empty? %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <%= "Sorry! No donuts at the moment!" if @donuts.empty? %>
       <%  @donuts.each do |donut| %>
-        <div class="card big-white-container" style="width: 18rem;">
+        <div class="card big-white-container col-3 m-3">
           <div class="card-body">
             <h5><strong><%= donut.name%></strong></h5>
           </div>
