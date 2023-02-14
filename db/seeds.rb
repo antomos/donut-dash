@@ -30,21 +30,22 @@ REVIEWS = [
   "I am so in love with this product. I am not a big dessert person, but these donuts are pretty awesome! The best part is that they are gluten-free, which is great for us. I have tried a few different flavors and they really are delicious! I am so happy to have found this site because I had been looking for a great gluten-free donut recipe. I would definitely recommend these to anyone."
 
 ]
-
+ADDRESSES = ["61 Oxford St, London W1D 2EH, UK","7 Northumberland Ave, London WC2N 5BY","1 Piccadilly Circus, London W1J 0DA","Marylebone Rd, London NW1 5LR","83 Bell St, London NW1 6TB"]
+for i in 0..4 do
   user = User.new
-  user.email = "baker@baker.com"
+  user.email = "baker#{i}@baker.com"
   user.username = Faker::Internet.username
   user.password = "123456"
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
-  user.address = "61 Oxford St, London W1D 2EH, UK"
+  user.address = ADDRESSES[i]
   user.phone_number = Faker::PhoneNumber.cell_phone
   user.baker = true
   user.available = true
   user.save!
-  puts "User #{user.id} created"
+  puts "Baker #{i} created"
   if user.baker == true
-      8.times do
+      3.times do
         donut = Donut.new
         rand_num= rand(0..4)
         donut.name = DONUT[rand_num][0]
@@ -65,5 +66,19 @@ REVIEWS = [
         puts "Donut #{donut.id} created"
       end
   end
-
+end
+for i in 0..4 do
+  user = User.new
+  user.email = "buyer#{i}@buyer.com"
+  user.username = Faker::Internet.username
+  user.password = "123456"
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.address = ADDRESSES[i]
+  user.phone_number = Faker::PhoneNumber.cell_phone
+  user.baker = false
+  user.available = false
+  user.save!
+  puts "Buyer #{i} created"
+end
 puts "seed finished"
