@@ -1,34 +1,31 @@
-<h1 id="home-page-title">We are home to the most delicious donuts you've every tasted</h1>
+<h1 id="home-page-title">We are home to the most delicious donuts you've ever tasted</h1>
 <div class="container m-5 mx-auto big-white-container">
-  <div class="row">
-    <div class="col-6">
-      <img class="img-fluid" src="https://pyxis.nymag.com/v1/imgs/a22/179/b205a78510315d932427143ad6b6fb5694-03-homer-simpson-doughnuts.2x.rhorizontal.w700.jpg" alt="Homer eating donut">
-      <p>Check out our top rated donuts:</p>
+    <div class="d-flex justify-content-center p-5">
+      <img class="img-fluid w-25" src="https://pyxis.nymag.com/v1/imgs/a22/179/b205a78510315d932427143ad6b6fb5694-03-homer-simpson-doughnuts.2x.rhorizontal.w700.jpg" alt="Homer eating donut">
     </div>
-    <div class="col-6">
-      <p>
-        <%  @top_donuts.each do |donut| %>
-          <div class="card" style="width: 18rem;">
-            <div class="card-img-top">
-              <%= link_to donut_path(donut) do %>
-                <%= cl_image_tag(donut.photo.key, width: 200, height: 300, crop: :fit , alt: donut.name ) %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= donut.name%></strong> </h5>
-            </div>
-            <div>
-              <p class="card-text"><%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></p>
-            </div>
-            <div>
-              <p class="card-text">£ <%= donut.price%></p>
-            </div>
-            <div>
-              <p class="card-text"><%= donut.available? ? "Available" : "Not available" %></p>
-            </div>
+    <div class="rated-donuts-sentence d-flex justify-content-center p-3">
+      <p> Check out our top rated donuts:</p>
+    </div>
+    <div class="justify-content-around d-flex">
+        <p>
+          <%  @top_donuts.each do |donut| %>
+             <div class="card big-white-container col-3 m-3">
+          <div class="card-body">
+            <h5><strong><%= donut.name%></strong></h5>
           </div>
-        <% end %>
-      </p>
-    </div>
+          <%= link_to donut_path(donut) do %>
+            <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+          <% end %>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
+              <li class="list-group-item">£ <%= donut.price%></li>
+              <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+            </ul>
+          </div>
+        </div>
+          <% end %>
+        </p>
+      </div>
   </div>
 </div>
