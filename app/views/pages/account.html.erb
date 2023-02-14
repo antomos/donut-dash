@@ -18,10 +18,4 @@
         </div>
       </div>
     <% end %>
-  <h1>------------</h1>
-  <% current_user.donuts.each do |donut| %>
-    <% donut.orders.each do |order| %>
-      <p><%= order.id %></p>
-    <% end %>
-  <% end %>
 </div>

@@ -11,7 +11,7 @@
           <% end %>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"> <i class="fa-solid fa-star"> <%= donut.rating>0 ? donut.rating : "N/A" %></i></li>
+              <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
               <li class="list-group-item">£ <%= donut.price%></li>
               <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
             </ul>

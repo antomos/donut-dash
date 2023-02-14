@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
-  before_action :set_donut, only: [:new, :create]
+  before_action :set_order, only: [:show, :update]
+  before_action :set_donut, only: [:new, :create, :update]
 
   def show
     @donut = Donut.find(@order.donut_id)
@@ -28,6 +28,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order.update(order_params)
+    redirect_to bakery_path
+  end
+
   private
 
   def set_order
@@ -39,6 +44,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :requested_date, :requested_time)
+    params.require(:order).permit(:quantity, :requested_date, :requested_time, :status, :complete)
   end
 end
