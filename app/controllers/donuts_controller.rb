@@ -1,4 +1,5 @@
 class DonutsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
    @donuts = Donut.all
    @users = User.where(baker: true)
