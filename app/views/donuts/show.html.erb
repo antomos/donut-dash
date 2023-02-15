@@ -1,4 +1,9 @@
 <div class="container">
+    <div style="width: 100%; height: 300px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   <div class="row row-cols-2 m-5 mx-auto">
       <div class="card big-white-container m-1" style="width: 18rem;">
         <div class="card-body">
@@ -23,10 +28,18 @@
         </div>
 
       </div>
-      <div class="card big-white-container m-3" style="width: 18rem;">
+
+
+      <div class="card big-white-container p-3 shadow">
+        <h3>Add a donut to your order</h3>
+        <%= render"orders/form",donut:@donut,order:Order.new %>
+      </div>
+  </div>
+  <div class="row justify-content-md-center">
+
         <h3><strong>Reviews</strong></h3>
           <% @donut.reviews.each do |review| %>
-            <div class="card" >
+            <div class="card big-white-container p-3 shadow" >
               <div class="card-body">
                 <p class="card-text">
                   <% count = 0 %>
@@ -49,10 +62,6 @@
               </div>
             </div>
           <% end %>
-      </div>
-      <div class="card big-white-container p-3 shadow">
-        <h3>Add a donut to your order</h3>
-        <%= render"orders/form",donut:@donut,order:Order.new %>
       </div>
   </div>
 
