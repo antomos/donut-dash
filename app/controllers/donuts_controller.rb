@@ -13,13 +13,16 @@ class DonutsController < ApplicationController
   def show
     @donut = Donut.find(params[:id])
     @user = @donut.user
-    @users = User.find(@user.id)
-    @markers = @users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude
+
+    @markers =
+      [{
+        lat: @user.latitude,
+        lng: @user.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {donut: @donut, user: @user}),
+        marker_html: render_to_string(partial: "marker",locals: {donut: @donut})
       }
-    end
+       ]
+
   end
 
   def new
