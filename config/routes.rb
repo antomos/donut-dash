@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show]
   get :account, to: "pages#account"
   get :bakery, to: "pages#bakery"
+  get :archived, to: "pages#archived"
 end

@@ -20,8 +20,9 @@ class OrdersController < ApplicationController
     if @order.quantity
       @order.total_cost = (@order.quantity * @donut.price).round(2)
     end
-    @order.status = "pending" # add to model as deafault with migration
+    @order.status = "Pending" # add to model as deafault with migration
     @order.complete = false
+    @order.archived = false
     if @order.save
       redirect_to order_path(@order)
     else
@@ -45,6 +46,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :requested_date, :requested_time, :status, :complete)
+    params.require(:order).permit(:quantity, :requested_date, :requested_time, :status, :complete, :archived)
   end
 end
