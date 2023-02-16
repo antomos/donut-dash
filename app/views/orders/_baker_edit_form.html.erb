@@ -1,7 +1,10 @@
 <%= simple_form_for [donut, order], data: { controller: 'flatpickr' } do |f| %>
-  <%= f.select :status, options_for_select([["Pending", "pending"], ["Accepted", "accepted"]]) %>
-  <% if order.status == "accepted" || order.complete %>
+  <%= f.select :status, options_for_select([["Pending", "Pending"], ["Accepted", "Accepted"], ["Out for Delivery", "Out for Delivery"]]) %>
+  <% if order.status == "Out for Delivery" || order.complete %>
     <%= f.input :complete %>
+    <%= f.input :archived if order.complete %>
+  <% else %>
+    <br><br>
   <% end %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>
