@@ -4,7 +4,7 @@
     <div>
       <h2>Incoming Orders</h2>
       <% @pending_orders.each do |order| %>
-        <div class='card baker-order-card d-flex flex-row justify-content-between'>
+        <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
             <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
             <% total = order.total_cost.round(2).to_s.split(".") %>
@@ -35,7 +35,7 @@
     <div>
       <h2>Accepted Orders</h2>
       <% @accepted_orders.each do |order| %>
-        <div class='card baker-order-card d-flex flex-row justify-content-between'>
+        <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
             <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
             <% total = order.total_cost.round(2).to_s.split(".") %>
@@ -66,7 +66,7 @@
     <div>
       <h2>Fulfilled Orders</h2>
         <% @complete_orders.each do |order| %>
-          <div class='card baker-order-card d-flex flex-row justify-content-between'>
+          <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
             <div>
               <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
               <% total = order.total_cost.round(2).to_s.split(".") %>
@@ -102,7 +102,7 @@
     <h3><%= link_to "Add Dounut", new_donut_path %></h3>
     <div class="d-flex justify-content-center">
       <% current_user.donuts.each do |donut| %>
-        <div class="card big-white-container" style="width: 18rem;">
+        <div class="card big-white-container m-1" style="width: 18rem;">
           <div class="card-body">
             <h5><strong><%= donut.name%></strong></h5>
           </div>

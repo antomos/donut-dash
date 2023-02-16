@@ -5,9 +5,16 @@ class PagesController < ApplicationController
   end
 
   def account
+    sort_orders
   end
 
   def bakery
+    sort_orders
+  end
+
+  private
+
+  def sort_orders
     @complete_orders = []
     @pending_orders = []
     @accepted_orders = []
