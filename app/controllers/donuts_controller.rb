@@ -3,14 +3,15 @@ class DonutsController < ApplicationController
   before_action :set_donut, only: [:edit, :update]
 
   def index
-   @donuts = Donut.all
-   @users = User.where(baker: true)
-   @markers = @users.geocoded.map do |user|
-    {
-      lat: user.latitude,
-      lng: user.longitude
-    }
-  end
+    if params[:query].present?
+      @donuts = Donut.search_by_name_and_description(params[:query])
+    else
+      @donuts = Donut.all
+    end
+    @users = User.where(baker: true)
+    @markers = @users.geocoded.map do |user|
+      { lat: user.latitude, lng: user.longitude }
+    end
   end
 
   def show
@@ -23,9 +24,7 @@ class DonutsController < ApplicationController
         lng: @user.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {donut: @donut, user: @user}),
         marker_html: render_to_string(partial: "marker",locals: {donut: @donut})
-      }
-       ]
-
+      }]
   end
 
   def new
