@@ -81,23 +81,23 @@ for i in 0..4 do
   user.save!
   puts "Buyer #{i} created"
 end
-# for i in 1..15 do
-#   Order.create!(user: User.all.sample, donut: Donut.all.sample, quantity: rand(1..5), status: ["pending", "accepted", "rejected", "delivered"].sample)
-#   order = Order.new
-#   order.user_id = rand(5..10)
-#   donut = Donut.find(i)
-#   order.donut = donut
-#   order.quantity = rand(1..5)
-#   order.total_cost = (order.quantity * donut.price).round(2)
-#   puts "Order #{i} : #{donut.price} * #{order.quantity} = #{order.total_cost}"
-#   order.requested_date = Faker::Date.between(from: 2.days.ago, to: Date.today)
-#   order.requested_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-#   order.status = ["pending", "accepted", "rejected", "delivered"].sample
-#   if order.status == "delivered"
-#     order.complete = true
-#   end
-#   order.save!
+for i in 1..15 do
+  # Order.create!(user: User.all.sample, donut: Donut.all.sample, quantity: rand(1..5), status: ["pending", "accepted", "rejected", "delivered"].sample)
+  order = Order.new
+  order.user_id = rand(5..10)
+  donut = Donut.find(i)
+  order.donut = donut
+  order.quantity = rand(1..5)
+  order.total_cost = (order.quantity * donut.price).round(2)
+  puts "Order #{i} : #{donut.price} * #{order.quantity} = #{order.total_cost}"
+  order.requested_date = Faker::Date.between(from: 2.days.ago, to: Date.today)
+  order.requested_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
+  order.status = ["pending", "accepted", "rejected", "delivered"].sample
+  if order.status == "delivered"
+    order.complete = true
+  end
+  order.save!
 
-#   puts "Order #{i} created"
-# end
+  puts "Order #{i} created"
+end
 puts "seed finished"
