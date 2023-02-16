@@ -7,9 +7,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :orders
   has_many :donuts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  # has_many :orders, through: :donuts
-  # has_many :orders, through: :dounts # don't need
-  # has_many :reviews, though: :donuts, through: :orders # don't need
 end
