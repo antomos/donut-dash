@@ -16,6 +16,7 @@ class PagesController < ApplicationController
 
   def sort_orders
     @complete_orders = []
+    @delivery_orders = []
     @pending_orders = []
     @accepted_orders = []
 
@@ -24,8 +25,9 @@ class PagesController < ApplicationController
         if order.complete
           @complete_orders << order
         else
-          @pending_orders << order if order.status == "pending"
-          @accepted_orders << order if order.status == "accepted"
+          @pending_orders << order if order.status == "Pending"
+          @accepted_orders << order if order.status == "Accepted"
+          @delivery_orders << order if order.status == "Out for Delivery"
         end
       end
     end

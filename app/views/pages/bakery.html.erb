@@ -1,10 +1,10 @@
 <div class="container d-flex justify-content-center flex-column">
   <h1>Your Bakery</h1>
   <div class="d-flex justify-content-center">
-    <div>
+    <div style="min-width: 430px;">
       <h2>Incoming Orders</h2>
       <% @pending_orders.each do |order| %>
-        <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
+        <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
             <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
             <% total = order.total_cost.round(2).to_s.split(".") %>
@@ -13,7 +13,7 @@
             <%end%>
             <% total = total.join(".") %>
             <p>Total: £<%= total %></p>
-            <p>Order date: <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
+            <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
           </div>
           <div>
             <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
@@ -24,7 +24,7 @@
               <%= order.status %>
             </span>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <div class="container" style="width: 400px;">
+              <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
             </div>
@@ -32,10 +32,10 @@
         </div>
       <% end %>
     </div>
-    <div>
+    <div style="min-width: 430px;">
       <h2>Accepted Orders</h2>
       <% @accepted_orders.each do |order| %>
-        <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
+        <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
             <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
             <% total = order.total_cost.round(2).to_s.split(".") %>
@@ -44,7 +44,7 @@
             <%end%>
             <% total = total.join(".") %>
             <p>Total: £<%= total %></p>
-            <p>Order date: <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
+            <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
           </div>
           <div>
             <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
@@ -55,7 +55,7 @@
               <%= order.status %>
             </span>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <div class="container" style="width: 400px;">
+              <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
             </div>
@@ -63,36 +63,67 @@
         </div>
       <% end %>
     </div>
-    <div>
-      <h2>Fulfilled Orders</h2>
-        <% @complete_orders.each do |order| %>
-          <div class='card baker-order-card d-flex flex-row justify-content-around align-items-center'>
-            <div>
-              <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
-              <% total = order.total_cost.round(2).to_s.split(".") %>
-              <% if total[1].length == 1 %>
-                <% total[1] = total[1] + "0" %>
-              <%end%>
-              <% total = total.join(".") %>
-              <p>Total: £<%= total %></p>
-              <p>Order date: <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
-            </div>
-            <div>
-              <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
-            </div>
-            <div class="nav-link dropdown">
-              <p>Status:</p>
-              <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Complete
-              </span>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <div class="container" style="width: 400px;">
-                  <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
-                </div>
+    <div style="min-width: 430px;">
+      <h2>Out for delivery</h2>
+      <% @delivery_orders.each do |order| %>
+        <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
+          <div>
+            <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
+            <% total = order.total_cost.round(2).to_s.split(".") %>
+            <% if total[1].length == 1 %>
+              <% total[1] = total[1] + "0" %>
+            <%end%>
+            <% total = total.join(".") %>
+            <p>Total: £<%= total %></p>
+            <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+          </div>
+          <div class="nav-link dropdown">
+            <p>Status:</p>
+            <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= order.status %>
+            </span>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div class="container" style="width: 180px;">
+                <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div style="min-width: 430px;">
+      <h2>Fulfilled Orders</h2>
+      <% @complete_orders.each do |order| %>
+        <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
+          <div>
+            <p><b><%= order.donut.name %></b> x <%= order.quantity %></p>
+            <% total = order.total_cost.round(2).to_s.split(".") %>
+            <% if total[1].length == 1 %>
+              <% total[1] = total[1] + "0" %>
+            <%end%>
+            <% total = total.join(".") %>
+            <p>Total: £<%= total %></p>
+            <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+          </div>
+          <div class="nav-link dropdown">
+            <p>Status:</p>
+            <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Complete
+            </span>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div class="container" style="width: 180px;">
+                <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
       @order.total_cost = (@order.quantity * @donut.price).round(2)
     end
     @order.status = "pending" # add to model as deafault with migration
+    @order.complete = false
     if @order.save
       redirect_to order_path(@order)
     else
