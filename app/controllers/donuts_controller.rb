@@ -35,7 +35,7 @@ class DonutsController < ApplicationController
     @donut.user_id = current_user.id
 
     if @donut.save
-      redirect_to donut_path(@donut)
+      redirect_to bakery_path # donut_path(@donut)
     else
       render :new, status: :unprocessable_entity
     end
