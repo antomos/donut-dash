@@ -57,7 +57,7 @@ for i in 0..4 do
         donut.save!
         3.times do
           rand_num = rand(1..5)
-          review= Review.create!(comment:REVIEWS[rand_num-1], rating: rand_num ,donut:donut)
+          review= Review.create!(comment:REVIEWS[rand_num-1], rating: rand_num ,donut:donut, user:user)
           puts "Review #{review.id} created for donut #{donut.id}"
           donut.rating = Review.where(donut: donut).average(:rating).round(1)
           donut.number_ratings = Review.where(donut: donut).count

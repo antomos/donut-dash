@@ -11,6 +11,22 @@
         <% total = total.join(".") %>
         <p>Total: £<%= total %></p>
         <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
+
+
+        <div class="nav-link dropdown">
+          <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Customer Info
+          </span>
+          <div class="dropdown-menu dropdown-menu-begin" aria-labelledby="navbarDropdown">
+            <div class="container" style="width: 200px;">
+              <p><%= order.user.first_name %> <%= order.user.last_name %></p>
+              <p><%= order.user.address %></p>
+              <p><%= order.user.phone_number %></p>
+            </div>
+          </div>
+        </div>
+
+
       </div>
       <div>
         <%= cl_image_tag(order.donut.photo.key, width: 100, height: 100, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
