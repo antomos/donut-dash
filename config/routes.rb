@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :donuts, only: [:index, :show, :new, :create] do
+  resources :donuts, only: [:index, :show, :new, :create, :edit, :update] do
     resources :orders, only: [:new, :create, :new, :update]
     resources :reviews, only: [:create]
   end
   resources :orders, only: [:index, :show]
   get :account, to: "pages#account"
   get :bakery, to: "pages#bakery"
+  get :archived, to: "pages#archived"
 end

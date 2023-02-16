@@ -1,5 +1,6 @@
 <div class="container d-flex justify-content-center flex-column">
   <h1>Your Bakery</h1>
+  <h2><%= link_to "Order Archive", archived_path %></h2>
   <div class="d-flex justify-content-center">
     <div style="min-width: 430px;">
       <h2>Incoming Orders</h2>
@@ -144,10 +145,28 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
               <li class="list-group-item">£ <%= donut.price%></li>
-              <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+
+              <li class="list-group-item">
+                <div class="nav-link dropdown">
+                  <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= donut.available? ? "Available" : "Not available" %>
+                  </span>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="container" style="width: 180px;">
+                      <%= render "donuts/donut_availability_edit_form", donut: donut %>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+
+
+
+              <li class="list-group-item"><%= link_to "Edit Details", edit_donut_path(donut) %></li>
             </ul>
           </div>
         </div>
       <% end %>
     </div>
   </div>
+</div>

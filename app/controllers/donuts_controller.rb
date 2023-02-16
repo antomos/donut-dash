@@ -1,5 +1,7 @@
 class DonutsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_donut, only: [:edit, :update]
+
   def index
    @donuts = Donut.all
    @users = User.where(baker: true)
@@ -41,9 +43,21 @@ class DonutsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @donut.update(donut_params)
+    redirect_to bakery_path
+  end
+
   private
 
   def donut_params
     params.require(:donut).permit(:name, :photo, :description, :price, :available)
   end
+
+  def set_donut
+    @donut = Donut.find(params[:id])
+  end
+
 end

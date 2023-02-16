@@ -2,6 +2,7 @@
   <%= f.select :status, options_for_select([["Pending", "Pending"], ["Accepted", "Accepted"], ["Out for Delivery", "Out for Delivery"]]) %>
   <% if order.status == "Out for Delivery" || order.complete %>
     <%= f.input :complete %>
+    <%= f.input :archived if order.complete %>
   <% else %>
     <br><br>
   <% end %>

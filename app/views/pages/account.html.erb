@@ -2,7 +2,7 @@
   <h3>Hi <%= current_user.first_name %>!</h3>
   <h4>Active orders:</h4>
   <div class="d-flex justify-content-center">
-    <div>
+    <div style="min-width: 430px;">
       <h2>Pending Orders</h2>
       <% @pending_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
@@ -23,7 +23,7 @@
         </div>
       <% end %>
     </div>
-    <div>
+    <div style="min-width: 430px;">
       <h2>Accepted Orders</h2>
       <% @accepted_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
@@ -65,7 +65,7 @@
         </div>
       <% end %>
     </div>
-    <div>
+    <div style="min-width: 430px;">
       <h2>Delivered</h2>
       <% @complete_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
