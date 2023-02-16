@@ -2,22 +2,32 @@
 
   <div class="row justify-content-md-center">
     <%= "Sorry! No donuts at the moment!" if @donuts.empty? %>
-      <%  @donuts.each do |donut| %>
-        <div class="card big-white-container col-3 m-3">
-          <div class="card-body">
-            <h5><strong><%= donut.name%></strong></h5>
-          </div>
-          <%= link_to donut_path(donut) do %>
-            <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
-          <% end %>
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
-              <li class="list-group-item">£ <%= donut.price%></li>
-              <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
-            </ul>
-          </div>
+
+    <div class="col-10 p-3"><%= form_with url: donuts_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a donut"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %></div>
+
+    <%  @donuts.each do |donut| %>
+      <div class="card big-white-container col-3 m-3">
+        <div class="card-body">
+          <h5><strong><%= donut.name%></strong></h5>
         </div>
-      <% end %>
+        <%= link_to donut_path(donut) do %>
+          <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+        <% end %>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
+            <li class="list-group-item">£ <%= donut.price%></li>
+            <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
