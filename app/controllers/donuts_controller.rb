@@ -3,14 +3,21 @@ class DonutsController < ApplicationController
   before_action :set_donut, only: [:edit, :update]
 
   def index
-    if params[:query].present?
-      @donuts = Donut.search_by_name_and_description(params[:query])
+    if Donut.count == 0
+      @donuts = false
     else
-      @donuts = Donut.all
-    end
-    @users = User.where(baker: true)
-    @markers = @users.geocoded.map do |user|
-      { lat: user.latitude, lng: user.longitude }
+      @donuts = true
+      @found = true
+      if params[:query].present?
+        @donuts_available = Donut.search_by_name_and_description(params[:query]).where(available: true)
+        @donuts_not_available = Donut.search_by_name_and_description(params[:query]).where(available: false)
+        if @donuts_available.empty? && @donuts_not_available.empty?
+          @found = false
+        end
+      else
+        @donuts_available = Donut.where(available: true)
+        @donuts_not_available = Donut.where(available: false)
+      end
     end
   end
 
