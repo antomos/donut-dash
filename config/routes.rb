@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :donut_tags, only: [:new, :create]
   end
 
+  resources :donut_tags, only: [:destroy]
+
   resources :orders, only: [:index, :show]
 
   get :account, to: "pages#account"

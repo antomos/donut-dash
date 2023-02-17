@@ -216,11 +216,27 @@
                   </div>
                 </div>
               </li>
-              <% donut.donut_tags.each do |donut_tag| %>
-                <span><%= donut_tag.tag.name %></span>
-                <% end %>
 
-              <li class="list-group-item"><%= link_to "Add tag", new_donut_donut_tag_path(donut) %></li>
+              <li class="list-group-item">
+                <div class="nav-link dropdown">
+                  <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tags
+                  </span>
+                  <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                    <div class="container" style="width: 250px;">
+                      <%= render "donut_tags/form", donut: donut, donut_tag: DonutTag.new %>
+                    </div>
+                  </div>
+                </div>
+
+                <% donut.donut_tags.each do |donut_tag| %>
+                  <%= donut_tag.tag.name %><%= link_to "X", donut_tag_path(donut_tag), data: {
+                                              turbo_method: :delete,
+                                              turbo_confirm: "Are you sure you want to remove your #{donut_tag.tag.name} tag?"
+                                              }
+                                            %><br>
+                <% end %>
+              </li>
 
               <li class="list-group-item"><%= link_to "Edit Details", edit_donut_path(donut) %></li>
             </ul>
