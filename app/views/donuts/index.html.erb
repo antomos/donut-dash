@@ -31,7 +31,12 @@
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
-                <li class="list-group-item">£ <%= donut.price%></li>
+                <% price = donut.price.round(2).to_s.split(".") %>
+                <% if price[1].length == 1 %>
+                  <% price[1] = price[1] + "0" %>
+                <%end%>
+                <% price = price.join(".") %>
+                <li class="list-group-item">£ <%= price%></li>
                 <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
               </ul>
             </div>
@@ -53,7 +58,12 @@
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
-                <li class="list-group-item">£ <%= donut.price%></li>
+                <% price = donut.price.round(2).to_s.split(".") %>
+                <% if price[1].length == 1 %>
+                  <% price[1] = price[1] + "0" %>
+                <%end%>
+                <% price = price.join(".") %>
+                <li class="list-group-item">£ <%= price%></li>
                 <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
               </ul>
             </div>
