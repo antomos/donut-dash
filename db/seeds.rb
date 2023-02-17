@@ -46,6 +46,7 @@ BAKERS = [
   ["Baker5", "https://res.cloudinary.com/danwlbu2c/image/upload/v1676116025/production/pprg19mhcwcjiqtdc6vsomw393y9.jpg"]
 ]
 ADDRESSES = ["61 Oxford St, London W1D 2EH, UK","7 Northumberland Ave, London WC2N 5BY","1 Piccadilly Circus, London W1J 0DA","Marylebone Rd, London NW1 5LR","83 Bell St, London NW1 6TB"]
+
 donut_index = 0
 for i in 0..4 do
   user = User.new
