@@ -230,7 +230,7 @@
                 </div>
 
                 <% donut.donut_tags.each do |donut_tag| %>
-                  <%= donut_tag.tag.name %><%= link_to "X", donut_tag_path(donut_tag), data: {
+                  <%= donut_tag.tag.name %> <%= link_to "X", donut_tag_path(donut_tag), data: {
                                               turbo_method: :delete,
                                               turbo_confirm: "Are you sure you want to remove your #{donut_tag.tag.name} tag?"
                                               }
