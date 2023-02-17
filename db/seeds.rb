@@ -115,4 +115,8 @@ for i in 1..15 do
   end
   puts "Order #{i} created"
 end
+Tag.create!(name: "gluten free")
+Tag.create!(name: "vegetarian")
+Tag.create!(name: "vegan")
+Tag.create!(name: "low fat")
 puts "seed finished"

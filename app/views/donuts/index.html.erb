@@ -25,6 +25,18 @@
             <div class="card-body">
               <h5><strong><%= donut.name%></strong></h5>
             </div>
+
+            <div class="d-flex justify-content-center">
+                <% donut.donut_tags.each do |donut_tag| %>
+                  <p class="btn m-1" style="background-color: pink;">
+                    <%= "Ve" if donut_tag.tag.name == "vegan"%>
+                    <%= "Vg" if donut_tag.tag.name == "vegetarian"%>
+                    <%= "GF" if donut_tag.tag.name == "gluten free"%>
+                    <%= "LF" if donut_tag.tag.name == "low fat"%>
+                  </p>
+                <% end %>
+            </div>
+
             <%= link_to donut_path(donut) do %>
               <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
             <% end %>
@@ -57,7 +69,18 @@
               <h5><strong><%= donut.name%></strong></h5>
             </div>
 
-              <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+            <div class="d-flex justify-content-center">
+                <% donut.donut_tags.each do |donut_tag| %>
+                  <p class="btn m-1" style="background-color: pink;">
+                    <%= "Ve" if donut_tag.tag.name == "vegan"%>
+                    <%= "Vg" if donut_tag.tag.name == "vegetarian"%>
+                    <%= "GF" if donut_tag.tag.name == "gluten free"%>
+                    <%= "LF" if donut_tag.tag.name == "low fat"%>
+                  </p>
+                <% end %>
+            </div>
+
+            <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
 
             <div class="card-body">
               <ul class="list-group list-group-flush">
