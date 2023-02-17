@@ -47,6 +47,11 @@ BAKERS = [
 ]
 ADDRESSES = ["61 Oxford St, London W1D 2EH, UK","7 Northumberland Ave, London WC2N 5BY","1 Piccadilly Circus, London W1J 0DA","Marylebone Rd, London NW1 5LR","83 Bell St, London NW1 6TB"]
 
+Tag.create!(name: "gluten free")
+Tag.create!(name: "vegetarian")
+Tag.create!(name: "vegan")
+Tag.create!(name: "low fat")
+
 donut_index = 0
 for i in 0..4 do
   user = User.new
@@ -71,6 +76,8 @@ for i in 0..4 do
         donut.available = [true, false].sample
         donut.user = user
         donut.save!
+        DonutTag.create(donut: donut, tag: Tag.all.sample)
+        DonutTag.create(donut: donut, tag: Tag.all.sample)
         donut_index += 1
         puts "Donut #{donut.id} created"
       end
@@ -115,8 +122,5 @@ for i in 1..15 do
   end
   puts "Order #{i} created"
 end
-Tag.create!(name: "gluten free")
-Tag.create!(name: "vegetarian")
-Tag.create!(name: "vegan")
-Tag.create!(name: "low fat")
+
 puts "seed finished"
