@@ -10,6 +10,8 @@ class DonutTagsController < ApplicationController
 
     if @donut_tag.save
       redirect_to bakery_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
