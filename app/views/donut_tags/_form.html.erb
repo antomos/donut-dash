@@ -1,0 +1,6 @@
+<%= simple_form_for [donut, donut_tag] do |f| %>
+  <div class='d-flex'>
+    <%= f.association :tag, label: false, prompt: "Select a tag" %>
+    <%= f.submit "Add tag", style: 'height: 38px;' %>
+  </div>
+<% end %>
