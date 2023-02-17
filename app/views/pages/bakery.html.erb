@@ -216,9 +216,11 @@
                   </div>
                 </div>
               </li>
+              <% donut.donut_tags.each do |donut_tag| %>
+                <span><%= donut_tag.tag.name %></span>
+                <% end %>
 
-
-
+              <li class="list-group-item"><%= link_to "Add tag", donut_donut_tags_path(donut)#new %></li>
 
               <li class="list-group-item"><%= link_to "Edit Details", edit_donut_path(donut) %></li>
             </ul>
