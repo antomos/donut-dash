@@ -79,6 +79,7 @@
             <p>Total: £<%= total %></p>
             <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
             <p>Status: <%= order.complete ? "complete" : order.status %></p>
+            <%= link_to "Leave Review", new_donut_review_path(order.donut_id)  %>
           </div>
           <div>
             <%= cl_image_tag(order.donut.photo.key, width: 150, height: 150, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
