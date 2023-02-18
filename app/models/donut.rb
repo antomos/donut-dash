@@ -12,6 +12,6 @@ class Donut < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
                   against: [ :name, :description ],
-                  associated_against: { user: [ :username, :first_name, :last_name, :address ] },
+                  associated_against: { user: [ :first_name, :last_name, :address ] },
                   using: { tsearch: { prefix: true } }
 end
