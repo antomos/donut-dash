@@ -1,9 +1,10 @@
-<div class="container d-flex justify-content-center flex-column">
-  <h1>Your Bakery</h1>
-  <h2><%= link_to "Order Archive", archived_path %></h2>
+<h2 id="your-page-title"><%= current_user.first_name %>'s Orders</h2>
+<h4 id="your-page-title"><%= link_to "Go to Archive", archived_path, class:"button-in-title" %></h4>
+<div class="container d-flex justify-content-center flex-column top-spacing-small">
   <div class="d-flex justify-content-center">
+
     <div style="min-width: 430px;">
-      <h2>Incoming Orders</h2>
+      <h2 style="text-align: center;">Incoming Orders</h2>
       <% @pending_orders.each do |order| %>
         <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -38,7 +39,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -47,8 +48,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>Accepted Orders</h2>
+      <h2 style="text-align: center;">Accepted Orders</h2>
       <% @accepted_orders.each do |order| %>
         <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -83,7 +85,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -92,8 +94,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>Out for delivery</h2>
+      <h2 style="text-align: center;">Out for delivery</h2>
       <% @delivery_orders.each do |order| %>
         <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -129,7 +132,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -138,8 +141,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>Fulfilled Orders</h2>
+      <h2 style="text-align: center;">Fulfilled Orders</h2>
       <% @complete_orders.each do |order| %>
         <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -175,7 +179,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Complete
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -185,20 +189,23 @@
       <% end %>
     </div>
   </div>
+</div>
 
-
-  <div>
-    <h2>Your Donuts</h2>
-    <h3><%= link_to "Add Dounut", new_donut_path %></h3>
-    <div class="d-flex justify-content-center">
+<h2 id="your-page-title" class="top-spacing"><%= current_user.first_name %>'s Donuts</h3>
+<h4 id="your-page-title"><%= link_to "Add Dounut", new_donut_path, class:"button-in-title" %></h4>
+<div class="container d-flex justify-content-between flex-column top-spacing-small">
+  <div class="d-flex justify-content-around">
       <% current_user.donuts.each do |donut| %>
         <div class="card big-white-container m-1" style="width: 18rem;">
+
           <div class="card-body">
             <h5><strong><%= donut.name%></strong></h5>
           </div>
+
           <%= link_to donut_path(donut) do %>
             <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
           <% end %>
+
           <div class="card-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
@@ -209,7 +216,7 @@
                   <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <%= donut.available? ? "Available" : "Not available" %>
                   </span>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <div class="dropdown-menu dropdown-menu-" aria-labelledby="navbarDropdown">
                     <div class="container" style="width: 180px;">
                       <%= render "donuts/donut_availability_edit_form", donut: donut %>
                     </div>

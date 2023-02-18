@@ -11,11 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to "Donuts", donuts_path, class: "nav-link" %>
+          <%= link_to "All Donuts", donuts_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Bakers", "#", class: "nav-link" %>
-        </li>
+
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <% if current_user.photo.key %>
@@ -24,8 +22,8 @@
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Account", account_path, class: "dropdown-item" %>
               <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Your Purchases", account_path, class: "dropdown-item" %>
               <% if current_user.baker %>
                 <%= link_to "Your Bakery", bakery_path, class: "dropdown-item" %>
               <% end %>
