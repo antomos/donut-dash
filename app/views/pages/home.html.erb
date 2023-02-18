@@ -1,15 +1,20 @@
 <h1 id="home-page-title">We are home to the most delicious donuts you've ever tasted</h1>
 <div class="container m-5 big-white-container">
-    <div class="col-10 p-3"><%= form_with url: donuts_path, method: :get, class: "d-flex flex-row justify-content-center" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a donut"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %></div>
-    <div class="d-flex justify-content-center p-5">
-      <img class="img-fluid w-25" src="https://pyxis.nymag.com/v1/imgs/a22/179/b205a78510315d932427143ad6b6fb5694-03-homer-simpson-doughnuts.2x.rhorizontal.w700.jpg" alt="Homer eating donut">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="col-8 p-3">
+        <h3 class="title-search-bar text-center">Let homer know, what are you craving today?</h3>
+          <%= form_with url: donuts_path, method: :get, class: "p-3" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "search-form form-control p-2 text-right shadow",
+              placeholder: "Find your donut"
+            %>
+            <%= submit_tag "Search", class: "btn searchbar-button m-3 p-1 shadow" %>
+          <% end %>
+      </div>
+      <div class="p-5">
+        <img class="img-fluid w-100 p-3" src="https://pyxis.nymag.com/v1/imgs/a22/179/b205a78510315d932427143ad6b6fb5694-03-homer-simpson-doughnuts.2x.rhorizontal.w700.jpg" alt="Homer eating donut">
+      </div>
     </div>
     <div class="rated-donuts-sentence d-flex justify-content-center p-3">
       <p> Check out our top rated donuts:</p>

@@ -2,13 +2,13 @@
 
   <div class="row justify-content-md-center">
     <% if @donuts%>
-      <div class="col-10 p-3"><%= form_with url: donuts_path, method: :get, class: "d-flex" do %>
+      <div class="col-10 p-2"><%= form_with url: donuts_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "search-form form-control shadow",
           placeholder: "Find a donut"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "btn searchbar-button m-2 shadow" %>
       <% end %>
       </div>
       <% if !@found  %>
@@ -17,8 +17,8 @@
         </div>
       <% end %>
       <% if !@donuts_available.empty?%>
-        <div  class="row justify-content-md-center">
-          <h3>Available</h3>
+        <div  class="row justify-content-md-center m-3">
+          <h3 class="availability-font">Available</h3>
         </div>
         <%  @donuts_available.each do |donut| %>
           <div class="card big-white-container col-3 m-3">
@@ -44,8 +44,8 @@
         <% end %>
       <% end %>
       <% if !@donuts_not_available.empty?%>
-        <div>
-          <h3>Not Available</h3>
+        <div class="m-3">
+          <h3 class="availability-font">Not Available</h3>
         </div>
         <%  @donuts_not_available.each do |donut| %>
           <div class="card big-gray-container col-3 m-3">
