@@ -10,6 +10,30 @@
         %>
         <%= submit_tag "Search", class: "btn searchbar-button m-2 shadow" %>
       <% end %>
+
+      <div>
+        <% Tag.all.each do |tag| %>
+          <%= link_to donuts_path(tag: tag.name) do%>
+            <% if tag.name == "vegan"%>
+              <img style="background-color: green;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652300/production/5278701_u0pvgg.png" height="35" width="35">
+            <% end %>
+            <%  if tag.name == "vegetarian"%>
+              <img style="background-color: #64ff33;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652260/production/723734_wtdngc.png" height="35" width="35">
+            <% end %>
+            <%  if tag.name == "gluten free"%>
+              <img style="background-color:#ffd133;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652284/production/4905936_ds74gd.png" height="35" width="35">
+            <% end %>
+            <%  if tag.name == "low fat"%>
+              <img style="background-color: pink;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652316/production/4762115_g99zef.png" height="35" width="35">
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div>
+
+      </div>
+
       </div>
       <% if !@found  %>
         <div  class="row justify-content-md-center">
@@ -107,3 +131,9 @@
     <% end %>
   </div>
 </div>
+
+<% if @tag %>
+  <% @tag_arr.each do |donut| %>
+    <p><%= donut.name %></p>
+  <% end %>
+<% end %>
