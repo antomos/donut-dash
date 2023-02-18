@@ -3,6 +3,9 @@ class DonutsController < ApplicationController
   before_action :set_donut, only: [:edit, :update]
 
   def index
+
+    @tag = params[:tag]
+
     if Donut.count == 0
       @donuts = false
     else
@@ -16,7 +19,29 @@ class DonutsController < ApplicationController
         end
       else
         @donuts_available = Donut.where(available: true)
+
+        if @tag
+          @tag_arr = []
+          @donuts_available.each do |donut|
+            donut.donut_tags.each do |tag|
+              @tag_arr << donut if tag.tag.name == @tag
+            end
+          end
+          @donuts_available = @tag_arr
+        end
+
         @donuts_not_available = Donut.where(available: false)
+
+        if @tag
+          @tag_arr = []
+          @donuts_not_available.each do |donut|
+            donut.donut_tags.each do |tag|
+              @tag_arr << donut if tag.tag.name == @tag
+            end
+          end
+          @donuts_not_available = @tag_arr
+        end
+
       end
     end
   end
