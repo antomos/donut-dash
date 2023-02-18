@@ -1,12 +1,19 @@
-<div class="container mt-5">
-  <div class="row">
+<div class="container d-flex justify-content-around">
+  <div style="min-width: 860px;">
     <div class="col-12">
-      <div class='card'>
-       <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fit , alt: @donut.name, class:"rounded mx-auto d-block img-thumbnail" ) %>
-        <h3> Order Created #<%= @order.id %> </h3>
+      <div class="card big-white-container">
+        <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fit , alt: @donut.name, class:"rounded mx-auto d-block img-thumbnail" ) %>
+        <h3 style="text-align: center;"> Order Created #<%= @order.id %> </h3>
         <p>Order status: <%= @order.status %></p>
         <p>Order items: <%= @donut.name %> x <%= @order.quantity %></p>
-        <p>Total: £<%= @order.total_cost %></p>
+
+        <% price = @order.total_cost.round(2).to_s.split(".") %>
+        <% if price[1].length == 1 %>
+        <% price[1] = price[1] + "0" %>
+        <%end%>
+        <% price = price.join(".") %>
+        <p>Total: £<%= price %></p>
+
         <p>Order placed at: <%= @order.created_at %></p>
         <p>Order date: <%= @order.requested_date %> <%= @order.requested_time %></p>
       </div>
