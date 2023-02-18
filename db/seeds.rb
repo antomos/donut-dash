@@ -56,7 +56,6 @@ donut_index = 0
 for i in 0..4 do
   user = User.new
   user.email = "baker#{i}@baker.com"
-  user.username = Faker::Internet.username
   user.password = "123456"
   user.first_name = Faker::Company.name
   user.last_name = "N/A"
@@ -86,7 +85,6 @@ end
 for i in 0..9 do
   user = User.new
   user.email = "buyer#{i}@buyer.com"
-  user.username = Faker::Internet.username
   user.password = "123456"
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
