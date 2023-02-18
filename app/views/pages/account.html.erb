@@ -1,9 +1,9 @@
+<h2 id="your-page-title"><%= current_user.first_name %>'s Active Orders</h3>
 <div class='container'>
-  <h3>Hi <%= current_user.first_name %>!</h3>
-  <h4>Active orders:</h4>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-around p-3">
+
     <div style="min-width: 430px;">
-      <h2>Pending Orders</h2>
+      <h3 class="d-flex justify-content-around p-3">Pending Orders</h3>
       <% @pending_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -23,8 +23,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>Accepted Orders</h2>
+      <h3 class="d-flex justify-content-around p-3">Accepted Orders</h3>
       <% @accepted_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -44,8 +45,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>On its way!</h2>
+      <h3 class="d-flex justify-content-around p-3">Out For Delivery</h3>
       <% @delivery_orders.each do |order| %>
         <div class='card big-white-container baker-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -65,8 +67,9 @@
         </div>
       <% end %>
     </div>
+
     <div style="min-width: 430px;">
-      <h2>Delivered</h2>
+      <h3 class="d-flex justify-content-around p-3">Delivered</h3>
       <% @complete_orders.each do |order| %>
         <div class='card big-white-container user-order-card d-flex flex-row justify-content-around align-items-center'>
           <div>
@@ -79,6 +82,7 @@
             <p>Total: £<%= total %></p>
             <p>Order date: <br> <%= order.created_at.strftime('%d-%m-%Y %H:%M') %></p>
             <p>Status: <%= order.complete ? "complete" : order.status %></p>
+            <%= link_to "Leave Review", new_donut_review_path(order.donut_id)  %>
           </div>
           <div>
             <%= cl_image_tag(order.donut.photo.key, width: 150, height: 150, crop: :fill , alt: order.donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>

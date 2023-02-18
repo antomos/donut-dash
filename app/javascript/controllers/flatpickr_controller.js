@@ -7,6 +7,6 @@ export default class extends Controller {
 
   connect() {
     console.log("flatpickr_controller.js");
-    flatpickr(this.requestedDateTarget, {});
+    flatpickr(this.requestedDateTarget, {minDate: "today"});
   }
 }
