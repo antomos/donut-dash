@@ -7,7 +7,7 @@
         <%= cl_image_tag(@donut.photo.key, width: 600, height: 600, crop: :fill , alt: @donut.name, class:"card-img-top rounded mx-auto d-block img-thumbnail" ) %>
         <div class="card-body">
           <h5 class="card-title"><strong>Sold by: </strong></h5>
-          <p class="card-text"><%= @user.username%></p>
+          <p class="card-text"><%= @user.first_name%></p>
         </div>
         <div class="card-body">
           <h5 class="card-title"><strong>Description: </strong></h5>
@@ -74,7 +74,7 @@
                     <% end %>
                     <% count += 1 %>
                   <% end %>
-                  <%= review.user.username %>
+                  <%= review.user.first_name %>
                 </p>
               </div>
               <div class="card-body">
