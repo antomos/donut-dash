@@ -1,6 +1,6 @@
 <div class="container">
-  <div class=" d-flex flex-row justify-content-center row-cols-2 m-2">
-      <div class="card big-white-container m-4" style="width: 18rem;">
+  <div class=" d-flex flex-row row-cols-2 m-1">
+      <div class="card big-white-container justify-content-right m-4" style="width: 45%;">
         <div class="card-body">
             <h3><strong><%= @donut.name%></strong></h3>
           </div>
@@ -16,7 +16,7 @@
         <div class="card-body">
           <h5 class="card-title"><strong>Price:  </strong></h5>
           <% price = @donut.price.round(2).to_s.split(".") %>
-             <% if price[1].length == 1 %>
+            <% if price[1].length == 1 %>
             <% price[1] = price[1] + "0" %>
           <%end%>
           <% price = price.join(".") %>
@@ -52,17 +52,17 @@
         </div>
 
 
-        <div class="card big-white-container mt-3 ml-2 p-3 shadow" style="width: 600px; height: 100%">
+        <div class="card big-white-container mt-3 ml-2 p-4 shadow" style="width: 600px; height: 60%">
           <h3>Add this donut to your order</h3>
           <%= render"orders/form",donut:@donut,order:Order.new %>
         </div>
       </div>
   </div>
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-center">
 
         <h3><strong>Reviews</strong></h3>
           <% @donut.reviews.each do |review| %>
-            <div class="card big-white-container m-2 p-3 shadow" >
+            <div class="card big-white-container m-2 p-3 shadow", style= "width: 100%;" >
               <div class="card-body">
                 <p class="card-text">
                   <% count = 0 %>
