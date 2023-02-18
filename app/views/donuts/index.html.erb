@@ -11,9 +11,10 @@
         <%= submit_tag "Search", class: "btn searchbar-button m-2 shadow" %>
       <% end %>
 
-      <div>
+      <div class="d-flex m-2">
+        <h4>Filter:&nbsp;&nbsp;</h4>
         <% Tag.all.each do |tag| %>
-          <%= link_to donuts_path(tag: tag.name) do%>
+          <%= link_to donuts_path(tag: tag.name), style:"text_decoration: none;" do%>
             <% if tag.name == "vegan"%>
               <img style="background-color: green;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652300/production/5278701_u0pvgg.png" height="35" width="35">
             <% end %>
@@ -28,11 +29,10 @@
             <% end %>
           <% end %>
         <% end %>
+        <button type="button" class="btn searchbar-button shadow"><%= link_to "Reset", donuts_path, style:"text-decoration: none; color: white;"%></button>
       </div>
 
-      <div>
 
-      </div>
 
       </div>
       <% if !@found  %>
