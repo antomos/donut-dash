@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :donuts, only: [:index, :show, :new, :create, :edit, :update] do
     resources :orders, only: [:new, :create, :new, :update]
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:new, :create]
     resources :donut_tags, only: [:new, :create]
   end
 

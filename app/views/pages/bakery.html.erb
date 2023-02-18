@@ -38,7 +38,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -83,7 +83,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -129,7 +129,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= order.status %>
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -175,7 +175,7 @@
             <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Complete
             </span>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
               <div class="container" style="width: 180px;">
                 <%= render "orders/baker_edit_form", donut: order.donut, order: order %>
               </div>
@@ -209,7 +209,7 @@
                   <span class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <%= donut.available? ? "Available" : "Not available" %>
                   </span>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <div class="dropdown-menu dropdown-menu-" aria-labelledby="navbarDropdown">
                     <div class="container" style="width: 180px;">
                       <%= render "donuts/donut_availability_edit_form", donut: donut %>
                     </div>
