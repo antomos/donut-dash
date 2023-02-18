@@ -1,7 +1,16 @@
 class ReviewsController < ApplicationController
+
+  def new
+    @review = Review.new
+    @donut = Donut.find(params[:donut_id])
+  end
+
   def create
     @donut = Donut.find(params[:donut_id])
-    @review = @donut.reviews.new(review_params)
+    # @review = @donut.reviews.new(review_params)
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.donut = @donut
     if @review.save
       redirect_to @donut, notice: 'Review was successfully created.'
     else
