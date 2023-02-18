@@ -25,18 +25,6 @@
             <div class="card-body">
               <h5><strong><%= donut.name%></strong></h5>
             </div>
-
-            <div class="d-flex justify-content-center">
-                <% donut.donut_tags.each do |donut_tag| %>
-                  <p class="btn m-1" style="background-color: pink;">
-                    <%= "Ve" if donut_tag.tag.name == "vegan"%>
-                    <%= "Vg" if donut_tag.tag.name == "vegetarian"%>
-                    <%= "GF" if donut_tag.tag.name == "gluten free"%>
-                    <%= "LF" if donut_tag.tag.name == "low fat"%>
-                  </p>
-                <% end %>
-            </div>
-
             <%= link_to donut_path(donut) do %>
               <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
             <% end %>
@@ -50,6 +38,22 @@
                 <% price = price.join(".") %>
                 <li class="list-group-item">£ <%= price%></li>
                 <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+                <li class="list-group-item">
+                <% donut.donut_tags.each do |donut_tag| %>
+                    <% if donut_tag.tag.name == "vegan"%>
+                      <img style="background-color: green;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652300/production/5278701_u0pvgg.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "vegetarian"%>
+                      <img style="background-color: #64ff33;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652260/production/723734_wtdngc.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "gluten free"%>
+                      <img style="background-color:#ffd133;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652284/production/4905936_ds74gd.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "low fat"%>
+                      <img style="background-color: pink;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652316/production/4762115_g99zef.png" height="35" width="35">
+                    <% end %>
+                <% end %>
+                </li>
               </ul>
             </div>
           </div>
@@ -61,24 +65,11 @@
         </div>
         <%  @donuts_not_available.each do |donut| %>
           <div class="card big-gray-container col-3 m-3">
-            <div class="card-body">
-              <h5><strong><%= donut.name%></strong></h5>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <% donut.donut_tags.each do |donut_tag| %>
-                  <p class="btn m-1" style="background-color: pink;">
-                    <%= "Ve" if donut_tag.tag.name == "vegan"%>
-                    <%= "Vg" if donut_tag.tag.name == "vegetarian"%>
-                    <%= "GF" if donut_tag.tag.name == "gluten free"%>
-                    <%= "LF" if donut_tag.tag.name == "low fat"%>
-                  </p>
-                <% end %>
-            </div>
-
-            <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
-
-            <div class="card-body">
+              <div class="card-body">
+                <h5><strong><%= donut.name%></strong></h5>
+              </div>
+              <%= cl_image_tag(donut.photo.key, width: 600, height: 600, crop: :fill , alt: donut.name, class:"rounded mx-auto d-block img-thumbnail card-img-top" ) %>
+              <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"> <%= image_tag "donut-c.png", width: 20, height: 20 %> <%= donut.rating>0 ? "#{donut.rating} (#{donut.number_ratings})" : "N/A" %></li>
                 <% price = donut.price.round(2).to_s.split(".") %>
@@ -88,6 +79,22 @@
                 <% price = price.join(".") %>
                 <li class="list-group-item">£ <%= price%></li>
                 <li class="list-group-item"><%= donut.available? ? "Available" : "Not available" %></li>
+                <li class="list-group-item">
+                <% donut.donut_tags.each do |donut_tag| %>
+                    <% if donut_tag.tag.name == "vegan"%>
+                      <img style="background-color: green;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652300/production/5278701_u0pvgg.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "vegetarian"%>
+                      <img style="background-color: #64ff33;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652260/production/723734_wtdngc.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "gluten free"%>
+                      <img style="background-color:#ffd133;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652284/production/4905936_ds74gd.png" height="35" width="35">
+                    <% end %>
+                    <%  if donut_tag.tag.name == "low fat"%>
+                      <img style="background-color: pink;" src="https://res.cloudinary.com/danwlbu2c/image/upload/v1676652316/production/4762115_g99zef.png" height="35" width="35">
+                    <% end %>
+                <% end %>
+                </li>
               </ul>
             </div>
           </div>
