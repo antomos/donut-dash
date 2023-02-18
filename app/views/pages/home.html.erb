@@ -1,15 +1,15 @@
 <h1 id="home-page-title">We are home to the most delicious donuts you've ever tasted</h1>
-<div class="container m-5 big-white-container">
-    <div class="d-flex flex-row justify-content-center">
-      <div class="col-8 p-3">
-        <h3 class="title-search-bar text-center">Let homer know, what are you craving today?</h3>
-          <%= form_with url: donuts_path, method: :get, class: "p-3" do %>
+<div class="container mt-3 mb-3 big-white-container">
+    <div class="d-flex flex-row">
+      <div class="col-8 p-3 justify-content-center">
+        <h3 class="title-search-bar text-center m-2">Let homer know, what are you craving today?</h3>
+          <%= form_with url: donuts_path, method: :get, class: "d-flex m-2" do %>
             <%= text_field_tag :query,
               params[:query],
-              class: "search-form form-control p-2 text-right shadow",
+              class: "search-form form-control p-2 shadow",
               placeholder: "Find your donut"
             %>
-            <%= submit_tag "Search", class: "btn searchbar-button m-3 p-1 shadow" %>
+            <%= submit_tag "Search", class: "btn searchbar-button p-1 shadow" %>
           <% end %>
       </div>
       <div class="p-5">
