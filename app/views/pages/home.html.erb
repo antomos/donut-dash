@@ -2,7 +2,7 @@
 <div class="container mt-3 mb-3 big-white-container">
     <div class="d-flex flex-row">
       <div class="col-8 p-3 justify-content-center">
-        <h3 class="title-search-bar text-center m-2">Let homer know, what are you craving today?</h3>
+        <h3 style="float: right; margin-left: 20px;" class="title-search-bar m-2">Mmm...Donuts!</h3>
           <%= form_with url: donuts_path, method: :get, class: "d-flex m-2" do %>
             <%= text_field_tag :query,
               params[:query],
